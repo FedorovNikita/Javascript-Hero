@@ -50,3 +50,111 @@ console.log(getCodeStringFromText('hello'));*/
 
 
 /*-------------------------ЗАДАЧА №6  ---------------------------*/
+/*function firstFunc(arr, secondFunc){
+	let retFn = "";
+	for (let i = 0; i < arr.length; i++) {
+		retFn += secondFunc(arr[i])
+	}
+	let str = "New value: " + retFn;
+
+	return str;
+};
+
+let fn = firstFunc(['my', 'name', 'is', 'Trinity'], function(el){
+	let st = "";
+	st += el[0].toUpperCase() + el.slice(1);
+
+	return st;
+});
+
+console.log(fn);*/
+
+
+
+/*function firstFunc(arr, secondFunc){
+	let retFn = "";
+	for (let i = 0; i < arr.length; i++) {
+		retFn += secondFunc(arr[i])
+	}
+	let str = "New value: " + retFn;
+
+	return str;
+};
+
+let fn = firstFunc([10, 20, 30], function(el){
+	let st = "";
+	st += el * 10 + ", ";
+
+	return st;
+});
+
+console.log(fn);*/
+
+
+
+
+/*function firstFunc(arr, secondFunc){
+	let retFn = "";
+	for (let i = 0; i < arr.length; i++) {
+		retFn += secondFunc(arr[i])
+	}
+	let str = "New value: " + retFn;
+
+	return str;
+};
+
+let fn = firstFunc([{age: 45, name: 'Jhon'}, {age: 20, name: 'Aaron'}], function(el){
+	let st = "";
+	st += el.name + ' is ' + el.age + ', ';
+
+	return st;
+});
+
+console.log(fn);*/
+
+
+
+/*function firstFunc(arr, secondFunc) {
+	let retFn = "";
+	for (let i = 0; i < arr.length; i++) {
+		retFn += secondFunc(arr[i])
+	}
+	let str = "New value: " + retFn;
+
+	return str;
+};
+
+let fn = firstFunc(['abc', '123'], function(el){
+	let st = "",
+		a = el.length,
+		str = "";
+	for ( let b = el.length-1; b >= 0; b--) {
+		str += el[b];
+	}
+	st += str + ', ';
+
+	return st;
+});
+
+console.log(fn);*/
+
+
+
+/*function firstFunc(arr, secondFunc) {
+	let retFn = "";
+	for (let i = 0; i < arr.length; i++) {
+		retFn += secondFunc(arr[i])
+	}
+	let str = "New value: " + retFn;
+
+	return str;
+};
+
+let fn = firstFunc([1, 2, 3], function(el) {
+	let st = "";
+	st += el + 5 + ', ';
+
+	return st;
+});
+
+console.log(fn);*/
