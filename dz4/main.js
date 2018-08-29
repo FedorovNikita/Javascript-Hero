@@ -140,36 +140,36 @@ arr.sort((prev, next) => {
 });
 console.log(arr);*/
 /*  ------------------ЗАДАЧА №15------------------ */
-const products = [
-	{title: 'prod1', price: 5.2},
-	{title: 'prod2', price: 0.18},
-	{title: 'prod3', price: 15},
-	{title: 'prod4', price: 25},
-	{title: 'prod5', price: 18.9},
-	{title: 'prod6', price: 8},
-	{title: 'prod7', price: 19},
-	{title: 'prod8', price: 63}
-];
+// const products = [
+// 	{title: 'prod1', price: 5.2},
+// 	{title: 'prod2', price: 0.18},
+// 	{title: 'prod3', price: 15},
+// 	{title: 'prod4', price: 25},
+// 	{title: 'prod5', price: 18.9},
+// 	{title: 'prod6', price: 8},
+// 	{title: 'prod7', price: 19},
+// 	{title: 'prod8', price: 63}
+// ];
 
-function filterCollection(prod, a, b) {
+// function filterCollection(prod, a, b) {
 
-	prod.sort((prev, next) => {
-		if (prev.price < next.price) return -1;
-		if (prev.price > next.price) return 1;
+// 	prod.sort((prev, next) => {
+// 		if (prev.price < next.price) return -1;
+// 		if (prev.price > next.price) return 1;
 		
-	});
-	/*let array = [];
-	for (let i = 0; i <= prod.length; i++) {
-		if (prod[i].price > a && prod[i].price < b) {
-			array.push(array[i]);
-		}
-	}
-	return array;*/
-	return prod;
+// 	});
+// 	/*let array = [];
+// 	for (let i = 0; i <= prod.length; i++) {
+// 		if (prod[i].price > a && prod[i].price < b) {
+// 			array.push(array[i]);
+// 		}
+// 	}
+// 	return array;*/
+// 	return prod;
 	
-}
+// }
 
 
-let res = filterCollection(products, 15, 30);
+// let res = filterCollection(products, 15, 30);
 
-console.log(res);
+// console.log(res);
