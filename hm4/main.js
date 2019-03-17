@@ -99,16 +99,15 @@ function delElemArr(arr, a, b) {
 // Заменить в массиве элементы на что-то новое
 // arr - массив
 // a - стартовое значение в splice
-// b - сколько элементов заменить
-// с - массив элементов, который добавляем
-
-function replaceElemArr(arr, a, b, ...c) {
+// b - сколько элементов удалить
+// elemArr - массив элементов, который добавляем
+function replaceElemsArr(arr, a, b, ...elemArr) {
     let repl = '';
-    for (let i = 0; i < c.length; i++) { 
-        if (i == c.length - 1) {
-            repl += c[i];
+    for (let i = 0; i < elemArr.length; i++) { 
+        if (i == elemArr.length - 1) {
+            repl += elemArr[i];
         } else {
-            repl += c[i] + ',';
+            repl += elemArr[i] + ',';
         }
     }
     let res = repl.split(',');
@@ -122,19 +121,163 @@ function replaceElemArr(arr, a, b, ...c) {
         }
         
     }
+    
+    return arr;
+}
+
+//console.log(replaceElemsArr([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 3, 6, 'four', 'five', 'six', 'seven', 'eight'));
+
+
+//---------------------------ЗАДАЧА 11-----------------------------------------
+// Вставить в произвольный массив после определенного элемента любое значение
+// arr - массив
+// a - стартовое значение в splice
+// elemArr - массив элементов, который добавляем
+function insertElemsArr (arr, a, ...elemArr) {
+    let repl = '';
+    for (let i = 0; i < elemArr.length; i++) { 
+        if (i == elemArr.length - 1) {
+            repl += elemArr[i];
+        } else {
+            repl += elemArr[i] + ',';
+        }
+    }
+
+    let res = repl.split(','); 
+
+    for (let i = 0; i < res.length; i++) {
+        arr.splice(a++, 0, res[i]);
+    }
 
     return arr;
 }
 
-console.log(replaceElemArr([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 3, 4, 'four', 'five', 'six', 'seven'));
+//console.log(insertElemsArr(['i', 'am', 'an', 'array'], 3, 'awesome', 'pampam'));
 
+//---------------------------ЗАДАЧА 12-----------------------------------------
+// Отсортируйте массив массивов так, чтобы вначале располагались наименьшие массивы
+// (размер массива определяется его длиной):
+/* let sortArr = [[14, 15], [1], ['a', 'c', 'd']].sort();
 
+console.log(sortArr); */
+//every([arr[i]], el => typeof el !== 'number')
 
+function sortArr (arr) {
+    
+    /* function every(arr, handler) {
+        for (let i = 0; i < arr.length; i++){
+            if (handler(arr[i])) return false;
+        }
+        
+        return true;
+    }
 
+    for (let i = 0; i < arr.length; i++) {
+        if (every(arr[i], el => typeof el !== 'number')){
+            arr[i].sort((prev, next) => prev - next);
+        } else {
+            arr[i].sort();
+        }  
+    } */
 
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].every(el => typeof el === 'number')){
+            arr[i].sort((prev, next) => prev - next);
+        } else {
+            arr[i].sort();
+        }  
+    }
 
+    arr.sort((prev, next) => prev.length - next.length);
 
+    return arr;
+}
 
+//console.log(sortArr([[14, 15, 3, 3], [2, 1], ['a', 'e', 'd', 'b', 'c'], [2], ['g', 'd', 'f']]))
+
+//---------------------------ЗАДАЧА 13-----------------------------------------
+// создать копию произвольного массива (slice, concat)
+function concatArr (arr, a, b) {
+    let partArr = arr.slice(a, b);
+    return [].concat(partArr, partArr);
+}
+
+//console.log(concatArr([1, 2, 3, 4, 5], 1, 3));
+
+//---------------------------ЗАДАЧА 14-----------------------------------------
+// Есть массив объектов. Отсортировать их по возрастающему количеству ядер
+let comp = [
+    {
+        cpu: 'intel',
+        info: {
+            cores: 2,
+            cache: 3
+        }
+    },
+    {
+        cpu: 'intel',
+        info: {
+            cores: 4,
+            cache: 4
+        }
+    },
+    {
+        cpu: 'amd',
+        info: {
+            cores: 1,
+            cache: 1
+        }
+    },
+    {
+        cpu: 'intel',
+        info: {
+            cores: 3,
+            cache: 2
+        }
+    },
+    {
+        cpu: 'amd',
+        info: {
+            cores: 4,
+            cache: 2
+        }
+    }
+] 
+
+/* comp.sort((prev, next) => {
+    if (prev.info.cores < next.info.cores) return - 1;
+    if (prev.info.cores > next.info.cores) return 1;
+}); */
+comp.sort((prev, next) => prev.info.cores - next.info.cores);
+
+//console.log(comp);
+
+//---------------------------ЗАДАЧА 15-----------------------------------------
+
+const products = [
+    {title: 'prod1', price: 5.2},
+    {title: 'prod2', price: 0.18},
+    {title: 'prod3', price: 15},
+    {title: 'prod4', price: 25},
+    {title: 'prod5', price: 18.9},
+    {title: 'prod6', price: 8},
+    {title: 'prod7', price: 19},
+    {title: 'prod8', price: 63}
+]
+
+function filterCollection (prod, a, b) {
+    prod.sort((prev, next) => prev.price - next.price);
+    let prodNew = [];
+    for (let i = 0; i < prod.length; i++) {
+        if (prod[i].price >= a && prod[i].price <= b){
+            prodNew.push(prod[i]);
+        }
+        
+    }
+    return prodNew;
+}
+
+console.log(filterCollection(products, 15, 30));
 
 
 
