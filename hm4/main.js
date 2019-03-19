@@ -277,7 +277,71 @@ function filterCollection (prod, a, b) {
     return prodNew;
 }
 
-console.log(filterCollection(products, 15, 30));
+//console.log(filterCollection(products, 15, 30));
+
+//----------------------------DOM---------------------------------------------
+//---------------------------ЗАДАЧА 1-----------------------------------------
+/* // Зная структура html, с помощью изученных методов получить(в консоль):
+// head
+let hd = document.head;
+// body
+let bd = document.body;
+// все дочерние элементы body и вывести их в консоль
+let childBody = document.body.children;
+// первый div и все его дочерние узлы 
+// а) вывести все дочерние узлы в консоль
+//let firstDiv = document.querySelector('div').children;
+let firstDiv = document.body.firstElementChild.children;
+// б) вывести в консоль все дочерние узлы, кроме первого и последнего
+let withoutFirstLast = document.body.children;
+
+for (let i = 0; i < withoutFirstLast.length; i++) {
+    if (i !== 0 && i !== withoutFirstLast.length - 1 ) {
+        console.log(withoutFirstLast[i]);
+    } 
+} */
+
+
+//---------------------------ЗАДАЧА 2-----------------------------------------
+// Создать функцию, которая принимает два элемента. Функция проверяет, является ли
+// первый элемент родителем второго
+
+function isParent (parent, child) {
+    let a = parent.tagName;
+    if (child.closest(a) == null) {
+        return false;
+    } else {
+        return true
+    }
+    
+}
+
+//console.log(isParent(document.body.children[0], document.querySelector('mark')));
+//console.log(isParent(document.querySelector('ul'), document.querySelector('mark')));
+
+//---------------------------ЗАДАЧА 3-----------------------------------------
+// Получить список всех ссылок, который не находятся внутри списка ul
+let link =  document.querySelectorAll('a');
+for (let i = 0; i < link.length; i++) {
+    if (!(link[i].parentNode.parentNode.tagName == 'UL')) {
+        console.log(link[i])
+    }
+} 
+
+//---------------------------ЗАДАЧА 4-----------------------------------------
+// Найти элемент, который находится перед и после списка ul
+let prevUl = document.querySelector('ul').previousElementSibling;
+let nextUl = document.querySelector('ul').nextElementSibling;
+
+//console.log(prevUl, nextUl);
+
+//---------------------------ЗАДАЧА 5-----------------------------------------
+// Посчитать количество элемент li в списке
+
+let li = document.querySelectorAll('ul li');
+//console.log(li.length);
+
+
 
 
 
