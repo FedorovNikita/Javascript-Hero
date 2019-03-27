@@ -82,4 +82,49 @@ for (let i = 0; i < allA.length; i++) {
     allA[i].classList.add('custom-link');
 }
 
+//---------------------------ЗАДАЧА 9----------------------------------
+// Не используя innerHTML, добавить в список несколько li с классом
+// "new-item" и текстом "item" + номер li
+
+for (let i = 0; i < 2; i++) {
+    let ul = document.getElementsByTagName('ul');
+    let newLi = document.createElement('li');
+    newLi.textContent = 'item' + (ul[0].children.length + 1);
+    newLi.className = 'new-item';
+
+    ul[0].insertAdjacentElement('beforeend', newLi);
+}
+
+//---------------------------ЗАДАЧА 10----------------------------------
+// Создать четыре элемента strong и добавить их в конец ссылок, которые
+// находятся внутри списка ul (в каждую ссылку один - strong)
+
+for (let i = 0; i < allLi.length; i++){
+    let strong = document.createElement('strong');
+    if (allLi[i].firstElementChild && allLi[i].firstElementChild.tagName.toLowerCase() == 'a') {
+        allLi[i].firstElementChild.insertAdjacentElement('beforeend', strong);
+    }
+}
+    
+//---------------------------ЗАДАЧА 11----------------------------------
+// В начало документа (в начало body) добавить img с атрибутами src 
+// и alt(текст придмайте сами). В scr добавьте реальный url к картинке
+let img = document.createElement('img');
+img.setAttribute('src', 'https://wallpapers-fenix.eu/lar/141215/155618955.jpg');
+img.setAttribute('alt', 'city')
+document.body.insertAdjacentElement('afterbegin', img)
+
+//---------------------------ЗАДАЧА 12---------------------------------
+// Найти на странице элемент mark, добавить в конец содержимого текст
+// "green" и на элемент установить класс green
+
+let mark = document.querySelector('mark');
+let tx = 'green';
+mark.insertAdjacentHTML('beforeend', ' green');
+mark.classList.add('green');
+
+//---------------------------ЗАДАЧА 13---------------------------------
+
+
+
 
