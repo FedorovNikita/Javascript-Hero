@@ -345,7 +345,7 @@ let li = document.querySelectorAll('ul li');
 //---------------------------ЗАДАЧА СО *-----------------------------------------
 let message = document.getElementById('alert');
 
-function textMessage (text) {
+function textMessage(text) {
     setTimeout(function () {
         message.textContent = text;
         message.classList.remove('hidden');
