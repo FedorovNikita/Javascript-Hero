@@ -84,8 +84,47 @@ users.sort((prev, next) => {
     if (prev.name < next.name) return - 1;
     if (prev.name > next.name) return 1;
 });
-console.log(users);
+//console.log(users);
 
+ 
+
+//---------------------------DOM-----------------------------------------
+//живая коллекция HTMLCollection
+let divs = document.getElementsByTagName('div');//HTMLCollection(3) [div, div.box, div#element, element: div#element]
+let divsByClass = document.getElementsByClassName('box');// HTMLCollection [div.box]
+let divById = document.getElementById('element');// <div id="element">div box</div>
+
+// не живая коллекция NodeList
+let divsQuery = document.querySelectorAll('body div');//NodeList(3) [div, div.box, div#element]
+let divQuery = document.querySelector('div');// <div>Empty div</div> - первый попавшийся
+
+//nextElementSibling и previousElementsSibling - это для элементов
+//nextSibling и previousSibling - это для узлов
+
+//все дочерние элементы, выдаст коллекцию 
+console.log(divById.children);//HTMLCollection(2) [h1, ul]
+//родительский элемент
+console.log(divById.parentElement);//<body>...</body>
+//последний элемент
+console.log(divById.lastElementChild);// <ul>...</ul>
+//первый элемент
+console.log(divById.firstElementChild);//<h1>Hello</h1>
+//ввыдаст все текстовое содержимое элемента 
+console.log(divById.innerText);// Hello link link link
+//все HTML содержимое элемента
+console.log(divById.innerHTML);// <h1>Hello</h1>
+                                // <ul>
+                                //     <li><a href="#">link</a></li>
+                                //     <li><a href="#">link</a></li>
+                                //     <li><a href="#">link</a></li>
+                                // </ul>
+//перезависали все содержимое div, теперь там пусто
+//console.log(divById.innerHTML = '');
+
+// ближайший предок, который находится выше по уровню ВЛОЖЕННОСТИ - closest
+let link = document.querySelector('ul a');
+let parent = link.closest('li');
+console.log(parent);// <li><a href="#">link</a></li>
 
 
 
