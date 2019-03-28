@@ -89,7 +89,7 @@ for (let i = 0; i < allA.length; i++) {
 for (let i = 0; i < 2; i++) {
     let ul = document.getElementsByTagName('ul');
     let newLi = document.createElement('li');
-    newLi.textContent = 'item' + (ul[0].children.length + 1);
+    newLi.textContent = 'item' + (ul[0].children.length + 1); 
     newLi.className = 'new-item';
 
     ul[0].insertAdjacentElement('beforeend', newLi);
@@ -124,7 +124,18 @@ mark.insertAdjacentHTML('beforeend', ' green');
 mark.classList.add('green');
 
 //---------------------------ЗАДАЧА 13---------------------------------
+// Вывести li в обратном порядке
+let arrLi = [];
+let ul = document.getElementsByTagName('ul');
+for (let i = 0; i < allLi.length; i++) {
+    arrLi.push(allLi[i]);
+}
+document.querySelector('ul').innerText = '';
 
+let i = arrLi.length;
+while(i--){
+    ul[0].insertAdjacentElement('beforeend', arrLi[i]);
+}
 
 
 
