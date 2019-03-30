@@ -22,7 +22,17 @@ btnMsg.addEventListener('mouseout', function() {
 // имя тега нажатого элемента
 let bd = document.body;
 let tag = document.querySelector('#tag');
-bd.addEventListener('click', function(e) {
-    let teg = e.target.tagName;
-    tag.textContent = teg;
+let span = document.createElement('span');
+bd.addEventListener('click', function(e) { 
+    if (!tag.children.length) {
+        span.textContent = e.target.tagName;
+        tag.appendChild(span);
+    } else {
+        /* let deleteSpan = document.querySelector('#tag span');
+        deleteSpan.textContent = ""; */
+        tag.children[0].innerText = '';
+        span.textContent = e.target.tagName;
+        tag.appendChild(span);        
+    }
+
 })
