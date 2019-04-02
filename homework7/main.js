@@ -128,11 +128,57 @@ let details = {
 }
 details.totalCost = product.totalCost;
 
+//---------------------------ЗАДАЧА 10-------------------------------
+// Даны объект и функция
+// Не изменяя функцию или объект, получить результат функции getSquare для объекта sizes
+let sizes = {
+    wight: 5,
+    height: 10
+};
+let getSquare = function() {
+    return this.wight * this.height;
+};
 
+getSquare.call(sizes);
 
+//---------------------------ЗАДАЧА 11-------------------------------
+// Дан массив. Используя ссылку на массив numbers и Math.min, найти минимальный элемент массива
+let numbers = [4, 12, 0, 10, -2, 4];
 
+Math.min.apply(null, numbers); // -2
 
+//---------------------------ЗАДАЧА 12-------------------------------
+// Исправить метод getFullHeight таким образом, чтобы можно было вычислить сумму трех
+// слагаемых (высота + отступы)
+// Для другого объекта вычислить полную высоту, используя для этого объект element.
+// В объект ничего не дописывать
+/* const element = {
+    height: '15px',
+    marginTop: '5px',
+    marginBottom: '5px',
+    getFullHeight: function() {
+        return parseInt(this.height) + parseInt(this.marginTop) + parseInt(this.marginBottom);
+    }
+}
 
+const block = {
+    height: '5px',
+    marginTop: '3px',
+    marginBottom: '3px'
+}
 
+element.getFullHeight.call(block); */
 
+//---------------------------ЗАДАЧА 13-------------------------------
+// Измените функцию getElementHeight таким образом, чтобы можно было вызвать getElementHeight и получить 25
+let element = {
+    height: 25,
+    getHeight: function() {
+        return this.height;
+    }
+}
 
+/* let getElementHeight = element.getHeight(element);
+getElementHeight; */
+let getElementHeight = element.getHeight.bind(element); 
+getElementHeight();
