@@ -20,8 +20,11 @@ const price = {
     getPrice: function() {
         return this.price;
     },
+    // getPriceWithDiscount: function() {
+    //     return this.price - (this.price / 100 * parseInt(this.discount));
+    // }
     getPriceWithDiscount: function() {
-        return this.price - (this.price / 100 * parseInt(this.discount));
+        return this.price * (100 - parseInt(this.discount)) / this.price;
     }
 }
 
@@ -80,11 +83,50 @@ const user = {name: 'Abraham'},
     }
 
 user.getName; // undefined
+// "Одалживание" метода
 user.getName = otherUser.getName;
 
 user.getName(); // 'Abraham'
 otherUser.getName(); // 'John'
 
+//---------------------------ЗАДАЧА 7-------------------------------
+// Что выведет код, почему?
+function getList() {
+    return this.list;
+}
+let users = {
+    length: 4,
+    list: ['Abraham', 'James', 'John', 'Steven']
+}
+
+getList(); // undefined, т.к. this будет указывать на window
+// присваем users.getList функцию
+users.getList = getList; 
+// теперь this будет ссылаться на users 
+users.getList(); // вернет массив
+// с помощью call получили зрачение this в котексте users
+getList.call(users); // вернет массив
+
+//---------------------------ЗАДАЧА 8-------------------------------
+// Создать объект с розничной ценой и количеством продуктов. Этот объект
+// должен содержать метод для получения общей стоимости всех товаров
+let product = {
+    price: 100,
+    totalNumber: 50,
+    totalCost: function() {
+        return this.price * this.totalNumber;
+    }
+}
+
+//---------------------------ЗАДАЧА 9-------------------------------
+// Создать объект, который описывает количество деталей и цену за одну деталь.
+// Для второго объекта нужно узнать общую стомость всех деталей, но нельзя
+// создавать новые функции и методы. Для этого "позаимствуйте" метод из предыдущего объекта
+let details = {
+    price: 250,
+    totalNumber: 10
+}
+details.totalCost = product.totalCost;
 
 
 
