@@ -182,3 +182,123 @@ let element = {
 getElementHeight; */
 let getElementHeight = element.getHeight.bind(element); 
 getElementHeight();
+//---------------------------ЗАДАЧА 14-------------------------------
+// Создать фкнкцию которая бы умела делать
+// minus(10)(6); // 4
+// minus(5)(6); // -1
+// minus(10)(); // 10
+// minus()(6); // 6
+// minus()(); // 0
+
+function minus(num1 = 0) {
+    return function(num2 = 0) {
+        if (num1 == 0) {
+            return num2;
+        } 
+        return num1 - num2;
+    }
+}
+
+let getNumber = minus;
+
+//---------------------------ЗАДАЧА 15-------------------------------
+// Реализовать функцию, которая умножает и умеет запоминать возвращаемый результат
+// между вызовами
+// multiply(2); // 4
+// multiply(1); // 4
+// multiply(3); // 12
+// multiply(10); // 120
+
+function multiplyMaker(num1) {
+    let number1 = num1;
+    return function(num2) {
+        return number1 *= num2;
+    }
+}
+
+const multiply = multiplyMaker(2);
+
+/* console.log(multiply(2));
+console.log(multiply(1));
+console.log(multiply(3));
+console.log(multiply(10)); */
+
+//---------------------------ЗАДАЧА 16-------------------------------
+// Реализовать модуль, который работает со строкой и имеет методы:
+// a. установить строку:
+//      - если передано пустое значение, то установить пустую строку
+//      - если передано число, число привести к строке
+// b. получить строку 
+// c. получить длину строки
+// d. получить строку-перевертыш
+const str = (function() {
+    function setString(value) {
+        if (!value) {
+            return value = '';
+        } else if (typeof(value) == 'number') {
+            return value + '';
+        } else {
+            return value;
+        }
+    };
+    function getString(value) {
+        return value;
+    };
+    function lengthStr(value) {
+        return value.length;
+    };
+    function reverseStr(value) {
+        return value.split('').reverse().join('');
+    };
+    return {
+        setString,
+        getString,
+        lengthStr,
+        reverseStr
+    }
+})();
+
+//---------------------------ЗАДАЧА 17-------------------------------
+// Создайте модуль "калькулятор", который умеет складывать, умножать, вычитать, делить
+// и возводить в степень. Конечно значение округлить до двух знаков после точки 
+// (значение должно хранится в обычной переменной, не в this)
+const calculator = (function() {
+    let value;
+    function setValue(number) {
+        return value = number;
+    };
+    function add(number) {
+        return value += number;
+    };
+    function subtract(number) {
+        return value -= number;
+    };
+    function multiply(number) {
+        return value *= number;
+    };
+    function divide(number) {
+        return value /= number;
+    };
+    function power(number) {
+        return value = Math.pow(value, number);
+    };
+    function getValue() {
+        return +value.toFixed(2);
+    };
+    return {
+        setValue,
+        add,
+        subtract,
+        multiply,
+        divide,
+        power,
+        getValue
+    }
+})();
+
+// НЕ ЗНАЮ КАК СДЕЛАТЬ ЦЕПОЧКУ ВЫЗОВА С МОДУЛЕМ
+/* setValue(10).power(2).getValue(); */
+//setValue(10).add(5).multiply(2).
+
+
+
