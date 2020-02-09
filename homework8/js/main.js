@@ -1,49 +1,54 @@
 // Timer
-const buttons = document.querySelectorAll('[data-time]');
-const form = document.getElementById('custom');
-const stopButton = document.querySelector('.stop');
+const buttons = document.querySelectorAll('[data-time');
+const stop = document.querySelector('.stop');
+const form = document.querySelector('#custom');
+
 const timer = (function() {
-    let countDown,
-        timerDisplay,
-        endTime,
-        alarmSound;
-    
+
+    let countdown;
+    let timerDisplay;
+    let endTime;
+    let alarmSound;
+
     // принимаем стартовые параметры
     function init(settings) {
         timerDisplay = document.querySelector(settings.timeLeftSelector);
-        endTime = document.querySelector(settings.timeEndSelector); 
+        endTime = document.querySelector(settings.timeEndSelector);
         
         if (settings.alarmSound) {
             alarmSound = new Audio(settings.alarmSound);
         }
+
+        return this;
     }
 
     // принимает время в секундах
     function start(seconds) {
-        if (!timerDisplay || !endTime) return console.log('Please, init module first.');
-        if (!seconds || typeof seconds !== 'number') return timerDisplay.textContent = 'Please, provide seconds.';
-        
-        // reset timer
-        clearInterval(countDown);
-        
+        if (!timerDisplay || !endTime) return console.log('Please, init module first');
+        if (!seconds || typeof seconds !== 'number') return console.log('Please, provide seconds');
+
+        // сбрасываем таймер, чтобы не было глюков, когда нажали на несколько
+        clearInterval(countdown);
+
         if (alarmSound) {
-            // reset sound
-            alarmSound.pause()
+            // ставим музыку на паузу и обнуляем начало проигрывания, для следующих будильников, если мелодия длинная - актуально
+            alarmSound.pause();
             alarmSound.currentTime = 0;
         }
-        
+
+        // текущее время
         const now = Date.now();
+        // время окончания
         const then = now + seconds * 1000;
 
         displayTimeLeft(seconds);
-        dispayEndTime(then);
-        stopButton.textContent = 'STOP';
-        
-        countDown = setInterval(() => {
-            const secondsLeft = Math.round((then - Date.now()) / 1000);
+        displayEndTime(then);
 
+        countdown = setInterval(() => {
+            const secondsLeft = Math.round((then - Date.now()) / 1000);
+            
             if (secondsLeft < 0) {
-                clearInterval(countDown);
+                clearInterval(countdown);
                 playSound();
                 return;
             }
@@ -54,17 +59,17 @@ const timer = (function() {
 
     // приводим время в нужную нам форму 
     function displayTimeLeft(seconds) {
-        const day = Math.floor(seconds / 86400);
-        const hour = Math.floor((seconds / 3600) % 24);
-        const minutes = Math.floor((seconds / 60) % 60);
+        const days = Math.floor(seconds  / 60 / 60 / 24);
+        const hours = Math.floor(seconds / 60 / 60 % 24);
+        const minutes = Math.floor(seconds / 60 % 60);
         const reminderSeconds = seconds % 60;
-        const  dispaly =  `${day}  ${day == 0 ? 'дней' : day == 1 ? 'день' : day >= 2 && day <=4  ? 'дня' : 'дней'} ${hour}:${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`; 
-    
-        document.title = dispaly;
-        timerDisplay.textContent = dispaly;  
+        const display = `${days ? days + ' день ' : ' '}${hours ? hours + ':' : ' '}${minutes}:${reminderSeconds < 10 ? '0' : ''}${reminderSeconds}`;
+
+        document.title = display;
+        timerDisplay.textContent = display;
     }
 
-    function dispayEndTime(timestamp) {
+    function displayEndTime(timestamp) {
         const end = new Date(timestamp);
         const hour = end.getHours();
         const minutes = end.getMinutes();
@@ -86,32 +91,32 @@ const timer = (function() {
             case 11: newMonth = 'декабря'; break;
         }
 
-
         endTime.textContent = `Be back at ${day} ${newMonth} ${hour}:${minutes < 10 ? '0' : ''}${minutes}`;
     }
 
     function stop() {
-        // reset timer
-        clearInterval(countDown);
+        clearInterval(countdown);
     }
 
     function playSound() {
         alarmSound.play();
+        return this;
     }
 
     return {
         init,
         start,
-        stop
+        stop,
     }
-})();
+
+}());
 
 // init timer
 timer.init({
     timeLeftSelector: '.display__time-left',
     timeEndSelector: '.display__end-time',
     alarmSound: 'audio/message_sound.mp3'
-});
+}).start(86460);
 
 // start timer by click
 function startTimer(e) {
@@ -120,13 +125,10 @@ function startTimer(e) {
 }
 
 buttons.forEach(btn => btn.addEventListener('click', startTimer));
+stop.addEventListener('click', timer.stop);
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     let inp = document.querySelector('input');
-    timer.start(parseInt(inp.value * 60));
+    timer.start(+inp.value * 60);
 });
-
-stopButton.addEventListener('click', function(e) {
-    timer.stop();
-})

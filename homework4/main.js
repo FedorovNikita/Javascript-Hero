@@ -1,30 +1,33 @@
-//---------------------------ЗАДАЧА 1---------------------------------------
-// Создать функцию, которая принимает массив, а возвращает новый массив с 
-// дублированными жлементами входного массива
-function doubleArray(arr) {
-    let a = arr.length;
+// ====================== Массивы. Задачи на методы ========================
+// 1. Создать функцию, которая принимает массив, а возвращает новый массив с 
+// дублированными элементами входного массива : doubleArray([1,2,3]) = [1,2,3,1,2,3]
+// function doubleArray(arr) {
+//     let a = arr.length;
 
-    for (let i = 0; i < a; i++) {
-        arr.push(arr[i]);
-    }
+//     for (let i = 0; i < a; i++) {
+//         arr.push(arr[i]);
+//     }
 
-    return arr;
-}
-//console.log(doubleArray([1, 2, 3]));
+//     return arr;
+// }
 
-//---------------------------ЗАДАЧА 2-----------------------------------------
-// Получить последний элемент массива. Использовать функцию
-function lastElemArr(arr) {
+// function doubleArray(arr) {
+//     return arr.concat(arr);
+// }
+
+// console.log(doubleArray([1, 2, 3]));
+
+// 2. Получить последний элемент массива (массив не менять). Использовать функцию.
+/* function lastElemArr(arr) {
 
     return arr[arr.length-1];
 }
 
-//console.log(lastElemArr([1, 2, 3, 'sdfdf']))
+console.log(lastElemArr([1,2,3,4,5])) */
 
-//---------------------------ЗАДАЧА 3-----------------------------------------
-// Создавать фкнцию, которая принимает число N и возвращает массив, заполненный
-// числа от 1 до N
-function getArray(arr) {
+// 3. Создать функцию, которая принимает число N и возвращает массив заполненный числами от 1 до N: getArray(10); // [1,2,3,4,5,6,7,8,9,10]
+
+/* function getArray(arr) {
     let arrRes = [];
 
     for (let i = 1; i <= arr; i++) {
@@ -34,178 +37,142 @@ function getArray(arr) {
     return arrRes;
 }
 
-//console.log(getArray(10));
+console.log(getArray(10)); */
 
-//---------------------------ЗАДАЧА 4-----------------------------------------
-// Создавать функцию, которая принимает произвольное число массивов и удаляет
-// из каждого массива первый элемент, а возвращает массив из оставшихся значений
-function changeCollection(...arr) {
+// 4. Создать функцию, которая принимает произвольное (любое) число массивов и удаляет из каждого массива первый элемент, а возвращает массив из оставшихся значений: changeCollection([1,2,3], ['a', 'b', 'c']) => [2,3], [b,c]
+
+// function changeCollection(...arr) {
+//     for (let i = 0; i < arr.length; i++) {
+//         arr[i].shift();
+//     }
+
+//     return arr;
+// }
+
+/* function changeCollection(...arr) {
     for (let i = 0; i < arr.length; i++) {
-        arr[i].shift();
+        arr[i].splice(0,1);
     }
-
     return arr;
 }
 
-//console.log(changeCollection([1, 2, 3], ['one', 'two', 'three']));
 
-//---------------------------ЗАДАЧА 5-----------------------------------------
-// Дана произвольная строка "bcdaeflmjgkhi" - упорядочить буквы по алфавиту и
-// и вернуть строку с буквами в обратном порядке
+console.log(changeCollection([1, 2, 3], ['one', 'two', 'three'])); */
 
-function strSortReverse (str) {
+
+// ================ Массивы. Задачи ================
+// 1. Дана произвольная строка "bcdaeflmjgkhi" - упорядочить буквы по алфавиту и вернуть строку с буквами в обратном порядке ("mlkjihgfedcba"). Оформить в виду функции
+
+/* function strSortReverse (str) {
     return str.split('').sort().reverse().join('');   
 }
 
-//console.log(strSortReverse('bcdaeflmjgkhi'));
+console.log(strSortReverse('bcdaeflmjgkhi')); */
 
-//---------------------------ЗАДАЧА 6-----------------------------------------
-// Отсортировать массив [2, 4, 7, 1, -2, 10, -9] в обратном порядке
-function numbersSortReverse (arr) {
-    return arr.sort((next, prev) => next - prev).reverse();
+// 2. Отсортировать массив [2,4,7,1,-2,10,-9] в обратном порядке: [10,7,4,2,1,-2,-9]. Используйте функцию
+
+/* function numbersSortReverse (arr) {
+    return arr.sort((prev, next) => prev - next).reverse();
+} */
+
+/* function numbersSortReverse (arr) {
+    return arr.sort((prev, next) => next - prev);
+} */
+
+/* function numbersSortReverse(arr) {
+    arr.sort(function(prev, next) {
+        return prev - next;
+    }) 
+    return arr.reverse();
+} */
+
+// function numbersSortReverse(arr) {
+//     arr.sort(function(prev, next) {
+//         return next - prev;
+//     }) 
+//     return arr;
+// }
+
+// console.log(numbersSortReverse([2, 4, 7, 1, -2, 10, -9]));
+
+// 3. Написать функцию, которая принимает три аргумента: произвольный массив и два числа, первое из которых означает начальный номер элемента в массиве, второе - конечный номер. Функция должна вернуть новый массив, состоящий из элементов первой коллекции согласно аргументам (с - по): getNewArray(['a','b','c','d','e'], 2, 4) => ['c','d','e']
+
+/* function getNewArray(arr, a, b) {
+    return arr.slice(a, b + 1);
 }
-//console.log(numbersSortReverse([2, 4, 7, 1, -2, 10, -9]));
 
-//---------------------------ЗАДАЧА 7-----------------------------------------
-// Написать функцию, которая принимает три аргумента: произвольный массив и
-// два числа, первое из которых означает начальный номер элемента в массива,
-// второе - конечный номер. Функция должна вернуть новый массив, состоящий из
-// элементов первой коллекции соглано аргументам (с - по)
-function getNewArray(arr, a, b) { 
-    return arr.slice(a, b+1);    
-}
+console.log(getNewArray(['a', 'b', 'c', 'd', 'e', 'f'], 2, 4)); */
 
-//console.log(getNewArray(['a', 'b', 'c', 'd', 'e', 'f'], 2, 4));
+// 4. Удвоить все элементы массива, не используя циклы ['one', 2, 'three', 4] => ['one', 2, 'three', 4, 'one', 2, 'three', 4]
 
-//---------------------------ЗАДАЧА 8-----------------------------------------
-// Удвоить все элементы массива, не используя циклы
-
-function doubleArr(arr) {
+/* function doubleArr(arr) {
     return arr.concat(arr);
 }
 
-//console.log(doubleArr(['one', 2, 'three', 4, 34, 'Nik']));
+console.log(doubleArr(['one', 2, 'three', 4, 34, 'Nik'])); */
 
-//---------------------------ЗАДАЧА 9-----------------------------------------
-// Удалить определенные элементы в массиве
-function delElemArr(arr, a, b) {
+// 5. Удалить из [1,2,3,4,5], второй и третий элементы (3,4)
+
+/* function delElemArr(arr, a, b) {
     arr.splice(a, b);
 
     return arr;
-}
+} */
 //console.log(delElemArr([1, 2, 3, 4, 5], 3, 4));
 
-//---------------------------ЗАДАЧА 10-----------------------------------------
-// Заменить в массиве элементы на что-то новое
-// arr - массив
-// a - стартовое значение в splice
-// b - сколько элементов удалить
-// elemArr - массив элементов, который добавляем
-function replaceElemsArr(arr, a, b, ...elemArr) {
-    let repl = '';
-    for (let i = 0; i < elemArr.length; i++) { 
-        if (i == elemArr.length - 1) {
-            repl += elemArr[i];
-        } else {
-            repl += elemArr[i] + ',';
-        }
+// 6. Удалить из [1,2,3,4,5], второй и третий элементы (3,4) и на их место вставить 'three', 'four'
+/* function changeArr(arr, a, b, ...str) {
+    arr.splice(a, b);
+    for (let i = 0; i < str.length; i++) {
+        arr.splice(a++, 0, str[i])
     }
-    let res = repl.split(',');
 
-   
-    for (let i = 0; i < res.length; i++) {
-        if (i == 0){
-            arr.splice(a++, b, res[i]);
-        } else {
-            arr.splice(a++, 0, res[i]);
-        }
-        
-    }
-    
     return arr;
 }
 
-//console.log(replaceElemsArr([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 3, 6, 'four', 'five', 'six', 'seven', 'eight'));
+let result = changeArr([1,2,3,4,5], 2,1, 'three', 'four', 'three', 'four',);
+console.log(result); */
 
 
-//---------------------------ЗАДАЧА 11-----------------------------------------
-// Вставить в произвольный массив после определенного элемента любое значение
+
+// 7. Вставить в произвольный массив после третьего элемента любое значение, например: ['i','am','an','array'] => ['i','am','an', 'awesome', 'array']
 // arr - массив
 // a - стартовое значение в splice
 // elemArr - массив элементов, который добавляем
-function insertElemsArr (arr, a, ...elemArr) {
-    let repl = '';
-    for (let i = 0; i < elemArr.length; i++) { 
-        if (i == elemArr.length - 1) {
-            repl += elemArr[i];
-        } else {
-            repl += elemArr[i] + ',';
-        }
-    }
+/* function insertElemsArr (arr, a, ...elemArr) {
 
-    let res = repl.split(','); 
-
-    for (let i = 0; i < res.length; i++) {
-        arr.splice(a++, 0, res[i]);
+    for (let i = 0; i < elemArr.length; i++) {
+        arr.splice(a++, 0, elemArr[i]);
     }
 
     return arr;
 }
 
-//console.log(insertElemsArr(['i', 'am', 'an', 'array'], 3, 'awesome', 'pampam'));
+console.log(insertElemsArr(['i', 'am', 'an', 'array'], 3, 'awesome', 'pampam')); */
 
-//---------------------------ЗАДАЧА 12-----------------------------------------
-// Отсортируйте массив массивов так, чтобы вначале располагались наименьшие массивы
-// (размер массива определяется его длиной):
-/* let sortArr = [[14, 15], [1], ['a', 'c', 'd']].sort();
+// 8. Отсортируйте массив массивов так, чтобы вначале располагались наименьшие массивы (размер массива определяется его длиной): [[14, 15], [1], ['a','b','c']] => [[1], [14, 15], ['a','b','c']]
 
-console.log(sortArr); */
-//every([arr[i]], el => typeof el !== 'number')
-
-function sortArr (arr) {
-    
-    /* function every(arr, handler) {
-        for (let i = 0; i < arr.length; i++){
-            if (handler(arr[i])) return false;
-        }
-        
-        return true;
-    }
-
-    for (let i = 0; i < arr.length; i++) {
-        if (every(arr[i], el => typeof el !== 'number')){
-            arr[i].sort((prev, next) => prev - next);
-        } else {
-            arr[i].sort();
-        }  
-    } */
-
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i].every(el => typeof el === 'number')){
-            arr[i].sort((prev, next) => prev - next);
-        } else {
-            arr[i].sort();
-        }  
-    }
-
-    arr.sort((prev, next) => prev.length - next.length);
-
-    return arr;
+/* function sortArr (arr) {
+    return arr.sort((prev, next) => prev.length - next.length);
 }
 
-//console.log(sortArr([[14, 15, 3, 3], [2, 1], ['a', 'e', 'd', 'b', 'c'], [2], ['g', 'd', 'f']]))
+console.log(sortArr([[14, 15, 3, 3], [2, 1], ['a', 'e', 'd', 'b', 'c'], [2], ['g', 'd', 'f']])) */
 
-//---------------------------ЗАДАЧА 13-----------------------------------------
-// создать копию произвольного массива (slice, concat)
-function concatArr (arr, a, b) {
+// 9. Создать копию произвольного массива
+/* function copyArr (arr, a, b) {
     let partArr = arr.slice(a, b);
     return [].concat(partArr, partArr);
+} */
+
+/* function copyArr(arr, a, b) {
+    let res = arr.slice(a,b+1)
+    return [].concat(res);
 }
 
-//console.log(concatArr([1, 2, 3, 4, 5], 1, 3));
+console.log(copyArr([1, 2, 3, 4, 5], 1, 3)); */
 
-//---------------------------ЗАДАЧА 14-----------------------------------------
-// Есть массив объектов. Отсортировать их по возрастающему количеству ядер
+// 10. Есть массив объектов
+// Отспортировать их по возрастающему количеству ядер
 let comp = [
     {
         cpu: 'intel',
@@ -248,11 +215,22 @@ let comp = [
     if (prev.info.cores < next.info.cores) return - 1;
     if (prev.info.cores > next.info.cores) return 1;
 }); */
-comp.sort((prev, next) => prev.info.cores - next.info.cores);
+// comp.sort((prev, next) => prev.info.cores - next.info.cores);
 
-//console.log(comp);
+// console.log(comp);
 
-//---------------------------ЗАДАЧА 15-----------------------------------------
+function sortArr(obj) {
+    // obj.sort(function(prev, next) {
+    //     return prev.info.cores - next.info.cores;
+    // })
+    // return obj;
+    return obj.sort((prev, next) => prev.info.cores - next.info.cores);
+}
+
+// let result = sortArr(comp);
+// console.log(result);
+
+//11. Создать функцию, которая будет принимать массив продуктов и две цены. Функция должна вернуть все продукты, цена которых находится в указанном диапазоне, и отсортировать от дешевых к дорогим
 
 const products = [
     {title: 'prod1', price: 5.2},
@@ -277,67 +255,79 @@ function filterCollection (prod, a, b) {
     return prodNew;
 }
 
-//console.log(filterCollection(products, 15, 30));
+// console.log(filterCollection(products, 15, 30));
 
-//----------------------------DOM---------------------------------------------
-//---------------------------ЗАДАЧА 1-----------------------------------------
-/* // Зная структура html, с помощью изученных методов получить(в консоль):
+// ================= Доступ к DOM. Задачи =================
+// Зная структура html, с помощью изученных методов получить(в консоль):
 // head
-let hd = document.head;
+/* let result = document.head;
+
+console.log(result) */
 // body
-let bd = document.body;
+/* let result = document.body;
+
+console.log(result) */
 // все дочерние элементы body и вывести их в консоль
-let childBody = document.body.children;
+/* let result = document.body.children;
+
+console.log(result) */
 // первый div и все его дочерние узлы 
 // а) вывести все дочерние узлы в консоль
-//let firstDiv = document.querySelector('div').children;
-let firstDiv = document.body.firstElementChild.children;
+//let result = document.querySelector('div').children;
+/* let result = document.body.firstElementChild.children;
+
+console.log(result) */
 // б) вывести в консоль все дочерние узлы, кроме первого и последнего
-let withoutFirstLast = document.body.children;
+/* let withoutFirstLast = document.body.children;
 
-for (let i = 0; i < withoutFirstLast.length; i++) {
-    if (i !== 0 && i !== withoutFirstLast.length - 1 ) {
-        console.log(withoutFirstLast[i]);
-    } 
-} */
+// for (let i = 0; i < withoutFirstLast.length; i++) {
+//     if (i !== 0 && i !== withoutFirstLast.length - 1 ) {
+//         console.log(withoutFirstLast[i]);
+//     } 
+// }
 
+for (let i = 1; i < withoutFirstLast.length - 1; i++) {
+    console.log(withoutFirstLast[i]);
+}; */
 
-//---------------------------ЗАДАЧА 2-----------------------------------------
-// Создать функцию, которая принимает два элемента. Функция проверяет, является ли
-// первый элемент родителем второго
+// =================== DOM. задачи ======================
+// 1. Создать функцию, которая принимает два элемента. Функция проверяет, является ли первый элемент родителем для второго:
 
-function isParent (parent, child) {
+/* function isParent (parent, child) {
     let a = parent.tagName;
     if (child.closest(a) == null) {
         return false;
-    } else {
-        return true
     }
-    
+
+    return true
 }
 
-//console.log(isParent(document.body.children[0], document.querySelector('mark')));
-//console.log(isParent(document.querySelector('ul'), document.querySelector('mark')));
+console.log(isParent(document.body.children[0], document.querySelector('mark')));
+console.log(isParent(document.querySelector('ul'), document.querySelector('mark'))); */
 
-//---------------------------ЗАДАЧА 3-----------------------------------------
-// Получить список всех ссылок, который не находятся внутри списка ul
-let link =  document.querySelectorAll('a');
+// 2. Получить список всех ссылок, которые не находятся внутри списка ul
+/* let link =  document.querySelectorAll('a');
 for (let i = 0; i < link.length; i++) {
     if (!(link[i].parentNode.parentNode.tagName == 'UL')) {
-        //console.log(link[i])
+        console.log(link[i])
     }
-} 
+} */
 
-//---------------------------ЗАДАЧА 4-----------------------------------------
-// Найти элемент, который находится перед и после списка ul
+/* let result = document.querySelectorAll('a');
+
+for (let i = 0; i < result.length; i++) {
+    if (result[i].closest('ul') == null) {
+        console.log(result[i]);
+    }
+} */
+
+// 3. Получить элемент, который находится перед и после списка ul
 let prevUl = document.querySelector('ul').previousElementSibling;
 let nextUl = document.querySelector('ul').nextElementSibling;
 
 //console.log(prevUl, nextUl);
 
-//---------------------------ЗАДАЧА 5-----------------------------------------
-// Посчитать количество элемент li в списке
-
+// 4. Посчитать количество элементов li в списке
 let li = document.querySelectorAll('ul li');
 //console.log(li.length);
 
