@@ -224,40 +224,70 @@ console.log(res); */
 
 // 5. На основе строки "JavaScript is a pretty good language" сделать новую строку, где каждое слово начинается с большой буквы, а пробелы удалены
 
-/* let str = "JavaScript is a pretty good language",
-    newStr = '',
-	a = 0;
-// for (let i = 0; i < str.length; i++) {
-//     if (str[i] == ' '){
-//         a = 0;
-//     } else if(a == 0){
-//         newStr += str[i].toUpperCase();
-//         a = 1;
-//     } else {
-//         newStr += str[i];
-//     } 
-// }
-// console.log(newStr);
+/* let str = "JavaScript is a pretty good language";
+let newStr = '';
+let a = 0;
+for (let i = 0; i < str.length; i++) {
+    if (str[i] == ' '){
+        a = 0;
+    } else if(a == 0){
+        newStr += str[i].toUpperCase();
+        a = 1;
+    } else {
+        newStr += str[i];
+    } 
+}
+console.log(newStr); */
 
-
+/* let str = "JavaScript is a pretty good language";
+let newStr = '';
 for (let i = 0; i < str.length; i++) {
 	if (str[i] == ' ') {
-		newStr += str[++i].toUpperCase();
+        newStr += str[++i].toUpperCase(); 
 	} else {
 		newStr += str[i];
 	}
 }
 console.log(newStr); */
 
+/* let str = "JavaScript is a pretty good language";
+let newStr = '';
 
-// 6. Найти все нечетные числа от 1 до 15 включительно и вывести их в консоль
-for (let i = 0; i <= 15; i++) {
-    if (i % 2 == 1){
-        console.log(i);
+for (let i = 0; i < str.length; i++) {
+    if (!newStr) {
+        newStr += str[i].toUpperCase();
+    } else if (str[i - 1] === ' ') {
+        newStr += str[i].toUpperCase();
+    } else if (str[i] !== ' ') {
+        newStr += str[i];
     }
 }
 
+console.log(newStr); */
 
+/* let str = "JavaScript is a pretty good language";
+let newStr = '';
+let i = 0;
+let lengthStr = str.length; 
+while(i < lengthStr) {
+    if (!newStr) {
+        newStr += str[i].toUpperCase();
+    } else if (str[i - 1] === ' ') {
+        newStr += str[i].toUpperCase();
+    } else if (str[i] !== ' ') {
+        newStr += str[i];
+    }
+    i++;
+}
+
+console.log(newStr) */
+
+// 6. Найти все нечетные числа от 1 до 15 включительно и вывести их в консоль
+// for (let i = 0; i <= 15; i++) {
+//     if (i % 2 == 1){
+//         console.log(i);
+//     }
+// }
 
 
 
