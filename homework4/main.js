@@ -23,7 +23,7 @@
     return arr[arr.length-1];
 }
 
-console.log(lastElemArr([1,2,3,4,5])) */
+console.log(lastElemArr([1,2,3,4,5])); */
 
 // 3. Создать функцию, которая принимает число N и возвращает массив заполненный числами от 1 до N: getArray(10); // [1,2,3,4,5,6,7,8,9,10]
 
@@ -59,6 +59,17 @@ console.log(getArray(10)); */
 
 console.log(changeCollection([1, 2, 3], ['one', 'two', 'three'])); */
 
+/* function changeCollection(...arr) {
+    let newArr = [];
+    
+    for (let i = 0; i < arr.length; i++) {
+        newArr.push(arr[i].slice(1));
+    }
+    
+    return newArr;
+}
+
+console.log(changeCollection([1, 2, 3], ['a', 'b', 'c'])); */
 
 // ================ Массивы. Задачи ================
 // 1. Дана произвольная строка "bcdaeflmjgkhi" - упорядочить буквы по алфавиту и вернуть строку с буквами в обратном порядке ("mlkjihgfedcba"). Оформить в виду функции
@@ -113,12 +124,12 @@ console.log(doubleArr(['one', 2, 'three', 4, 34, 'Nik'])); */
 
 // 5. Удалить из [1,2,3,4,5], второй и третий элементы (3,4)
 
-/* function delElemArr(arr, a, b) {
-    arr.splice(a, b);
-
+/* function removeElemArr(arr, from, to) {
+    arr.splice(from, to);
     return arr;
-} */
-//console.log(delElemArr([1, 2, 3, 4, 5], 3, 4));
+}
+
+console.log(removeElemArr([1, 2, 3, 4, 5], 2, 2)); */
 
 // 6. Удалить из [1,2,3,4,5], второй и третий элементы (3,4) и на их место вставить 'three', 'four'
 /* function changeArr(arr, a, b, ...str) {
@@ -158,14 +169,22 @@ console.log(insertElemsArr(['i', 'am', 'an', 'array'], 3, 'awesome', 'pampam'));
 
 console.log(sortArr([[14, 15, 3, 3], [2, 1], ['a', 'e', 'd', 'b', 'c'], [2], ['g', 'd', 'f']])) */
 
+// function sortLengthArr(...arr) {
+//     return arr.sort((prev, next) => prev.length - next.length);
+// }
+
+// console.log(sortLengthArr([14, 45], [1], ['a', 'c', 'd']))
+
 // 9. Создать копию произвольного массива
-/* function copyArr (arr, a, b) {
+/* function copyArr(arr, a, b) {
     let partArr = arr.slice(a, b);
+
     return [].concat(partArr, partArr);
 } */
 
 /* function copyArr(arr, a, b) {
-    let res = arr.slice(a,b+1)
+    let res = arr.slice(a, b + 1);
+    
     return [].concat(res);
 }
 
@@ -232,7 +251,7 @@ function sortArr(obj) {
 
 //11. Создать функцию, которая будет принимать массив продуктов и две цены. Функция должна вернуть все продукты, цена которых находится в указанном диапазоне, и отсортировать от дешевых к дорогим
 
-const products = [
+/* const products = [
     {title: 'prod1', price: 5.2},
     {title: 'prod2', price: 0.18},
     {title: 'prod3', price: 15},
@@ -241,21 +260,23 @@ const products = [
     {title: 'prod6', price: 8},
     {title: 'prod7', price: 19},
     {title: 'prod8', price: 63}
-]
+];
 
-function filterCollection (prod, a, b) {
-    prod.sort((prev, next) => prev.price - next.price);
-    let prodNew = [];
-    for (let i = 0; i < prod.length; i++) {
-        if (prod[i].price >= a && prod[i].price <= b){
-            prodNew.push(prod[i]);
+function filterCollection(products, startPrice, finishPrice) {
+    products.sort((prev, next) => prev.price - next.price);
+
+    let newProducts = [];
+    
+    for (let i = 0; i < products.length; i++) {
+        if (products[i].price > startPrice && products[i].price < finishPrice) {
+        newProducts.push(products[i]);
         }
-        
     }
-    return prodNew;
+    
+    return newProducts;
 }
 
-// console.log(filterCollection(products, 15, 30));
+console.log(filterCollection(products, 15, 30)) */
 
 // ================= Доступ к DOM. Задачи =================
 // Зная структура html, с помощью изученных методов получить(в консоль):
