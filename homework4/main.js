@@ -314,9 +314,9 @@ for (let i = 1; i < withoutFirstLast.length - 1; i++) {
 // =================== DOM. задачи ======================
 // 1. Создать функцию, которая принимает два элемента. Функция проверяет, является ли первый элемент родителем для второго:
 
-/* function isParent (parent, child) {
+/* function isParent(parent, child) {
     let a = parent.tagName;
-    if (child.closest(a) == null) {
+    if (!child.closest(a)) {
         return false;
     }
 
@@ -342,6 +342,14 @@ for (let i = 0; i < result.length; i++) {
     }
 } */
 
+/* let links = document.links;
+
+for (let i = 0; i < links.length; i++) {
+    if (!(links[i].closest('ul'))) {
+        console.log(links[i])
+    }
+} */
+
 // 3. Получить элемент, который находится перед и после списка ul
 let prevUl = document.querySelector('ul').previousElementSibling;
 let nextUl = document.querySelector('ul').nextElementSibling;
@@ -352,30 +360,28 @@ let nextUl = document.querySelector('ul').nextElementSibling;
 let li = document.querySelectorAll('ul li');
 //console.log(li.length);
 
+// console.log(document.querySelector('ul').children.length);
+
+
 
 //---------------------------ЗАДАЧА СО *-----------------------------------------
-let message = document.getElementById('alert');
 
 function textMessage(text) {
+    let message = document.getElementById('alert');
+
     setTimeout(function () {
         message.textContent = text;
         message.classList.remove('hidden');
         message.classList.add('show');
     }, 1000)
     setTimeout(function() {
+        message.textContent = '';
         message.classList.remove('show');
         message.classList.add('hidden');
-    }, 5000);
+    }, 3000);
 
 }
 textMessage('Hello');
-
-
-
-
-
-
-
 
 
 
