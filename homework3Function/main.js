@@ -68,6 +68,20 @@ console.log(multiply(1, 2, 3)); */
 let res = multiply(1,2,3);
 console.log(res); */
 
+/* function multiply(...numbers) {
+    let multNumbers = 1;
+    
+    if (!numbers.length) return 0;
+    
+    for (let i = 0; i < numbers.length; i++) {
+      multNumbers *= numbers[i];
+    }
+    
+    return multNumbers;
+  }
+  
+  console.log(multiply(1, 2, 3)) */
+
 // 2. Факториал числа - произведение всех натуральных чисел от 1 до n включительно: 3! = 3*2*1, 5! = 5*4*3*2*1. С помощью рекурсии вычислить факториал числа 10: factorial(10) = 3628800
 /* function factorial(numb) {
     let result = numb;
@@ -79,6 +93,19 @@ console.log(res); */
 
 let res = factorial(10);
 console.log(res); */
+
+/* function factorial(num) {
+    let result = 1;
+    
+    while (num) {
+        result *= num; 
+        num--;
+    }
+    
+    return result;
+}
+
+console.log(factorial(10)); */
 
 // =========== Факториал числа рекурсией ================
 /*  function fuct(value) {
@@ -98,14 +125,15 @@ console.log(res); */
 /* function reverseString(str) {
     let res = ' ';
     // let i = str.length;
-    // while(i){
+
+    // while (i) {
     //     res += str[i - 1];
     //     i--;
 	// }
 	
 
     // let i = str.length;
-    // while(i--){
+    // while (i--) {
     //     res += str[i];
 	// }
 	
@@ -132,6 +160,19 @@ console.log(res); */
 let res = getCodeStringFromText('hello');
 console.log(res); */
 
+/* function getCodeStringFromText(str) {
+    let charCodeStr = '';
+    
+    for (let i = 0; i < str.length; i++) {
+        if (!i) charCodeStr += str.charCodeAt(i);
+        else charCodeStr += ' ' + str.charCodeAt(i);
+    }
+    
+    return charCodeStr;
+}
+
+console.log(getCodeStringFromText('hello')); */
+
 /*-------------------------ЗАДАЧА №5  ---------------------------*/
 
 
@@ -141,14 +182,14 @@ console.log(res); */
 //    - вторая функция (колбэк) обрабатывает каждый элемент массива
 // Первая функция возвращает строку "New value": и обработанный массив:
 
-function first(arr, cal) {
+/* function first(arr, cal) {
     let res = 'New value: ';
     for (let i = 0; i < arr.length; i++) {
         res += cal(arr[i]);
     }
 
     return res;
-}
+} */
 
 
 /* let res = first(['my', 'name', 'is', 'Nikita'], function second(value) {
@@ -163,7 +204,7 @@ function first(arr, cal) {
     return value.name + ' is ' + value.age + ", ";
 }); */
 
-let res = first(['abc', '123'], function second(value) {
+/* let res = first(['abc', '123'], function second(value) {
     let str = '';
     for (let i = value.length - 1; i >= 0; i--) {
         str += value[i];
@@ -171,4 +212,24 @@ let res = first(['abc', '123'], function second(value) {
     return str + ', ';
 });
 
-console.log(res);
+console.log(res); */
+
+function changeArray(arr, handler) {
+    let newValue = 'New value: ';
+    
+    for (let i = 0; i < arr.length; i++) {
+        newValue += handler(arr[i]);
+    }
+    
+    return newValue;
+}
+
+console.log(changeArray(['my', 'name', 'is', 'Trinity'], value => value[0].toUpperCase() + value.slice(1)));
+
+console.log(changeArray([10, 20, 30], value => value * 10 + ', '));
+
+console.log(changeArray([{age: 45, name: 'John'}, {age: 20, name: 'Aaron'}], value => `${value.name} is ${value.age}, `));
+
+console.log(changeArray(['abc', '123'], value => value.split('').reverse().join('') + ', '));
+
+console.log(changeArray([1, 2, 3], value => `${value + 5}, `));

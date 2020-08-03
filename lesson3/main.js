@@ -229,7 +229,7 @@ let everyRes = someArr.every(function (value) {// value - это один эле
 //console.log(methodRes, everyRes);
 
 // реализация some
-function some(arr, handler) {
+/* function some(arr, handler) {
     for (let i = 0; i < arr.length; i++){
         if (handler(arr[i])) return true;
     }
@@ -239,23 +239,33 @@ function some(arr, handler) {
 let customSome = some([1, 2, 'df'], function(el){
     return typeof el === 'number';
 })
-console.log(customSome);
+console.log(customSome); */
 
 
 // реализация every
-function every(arr, handler) {
+/* function every(arr, handler) {
     for (let i = 0; i < arr.length; i++){
         if (handler(arr[i])) return false;
     }
     
     return true;
 }
-/* let customEvery = every([1, 2, 'df'], function(el){
-    return typeof el !== 'number';
-}) */
+// let customEvery = every([1, 2, 'df'], function(el){
+//     return typeof el !== 'number';
+// })
 // arrow
 let customEvery = every([1, 2, 'df'], el => typeof el !== 'number');
 
-console.log(customEvery);
+console.log(customEvery); */
 
+// реализация every2
+function every(arr, handler) {
+    for (let i = 0; i < arr.length; i++){
+        if (!handler(arr[i])) return false;
+    }
+    
+    return true;
+}
+let customEv = every([1, 2, 'str'], (el) => typeof el === 'number');
 
+console.log(customEv);
