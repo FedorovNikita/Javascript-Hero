@@ -2,13 +2,23 @@
 // 1. Создать объект, который описывает ширину и высоту прямоугольника, а также может посчитать площадь фигуры:
 // const rectangle = {width:..., height:..., getSquare:...};
 
-const rectangle = {
+/* const rectangle = {
     wight: 4,
     height: 3,
     getSquare: function() {
         return this.wight * this.height;
     }
+} */
+
+/* const rectangle = {
+    width: 100,
+    height: 50,
+    getSquare() {
+        return this.width * this.height;
+    }
 }
+
+console.log(rectangle.getSquare()) */
 
 // 2. Создать объект, у которого будет цена товара и его скидка, а также два метода: для получения цены и для расчета цены с учетом скидки:
 /* const price = {
@@ -16,24 +26,24 @@ const rectangle = {
     discount: '15%',
     ...};
 price.getPrice(); // 10
-price.getPriceWidthDiscount(); // 8.5 */
+price.getPriceWithDiscount(); // 8.5 */
 
-const price = {
+/* const price = {
     price: 10,
     discount: '15%',
-    getPrice: function() {
+    getPrice() {
         return this.price;
     },
-    // getPriceWithDiscount: function() {
+    // getPriceWithDiscount() {
     //     return this.price - (this.price / 100 * parseInt(this.discount));
     // }
-    // getPriceWidthDiscount() {
+    // getPriceWithDiscount() {
     //     return this.price * ((100 - parseFloat(this.discount)) / 100);
     // }
-    getPriceWithDiscount: function() {
+    getPriceWithDiscount() {
         return this.price * (100 - parseInt(this.discount)) / this.price;
     }
-}
+} */
 
 // 3. Дан объект и функция: const user = {name: 'Abraham'}, getUserName = function() {...}; Внесите в этот код такие изменения, чтобы можно было вызвать user.getName() и получить 'Nikita'
 
@@ -63,7 +73,7 @@ console.log(user.getName()); */
 }
 numerator.double().plusOne().plusOne().minusOne();
 numerator.value; // 3 */
-
+/* 
 let numerator = {
     value: 1,
     double: function() {
@@ -78,7 +88,7 @@ let numerator = {
         this.value--;
         return this;
     }
-}
+} */
 
 // 6. Разобрать и объяснить, что тут происходит
 /* const user = {name: 'Abraham'},
@@ -94,7 +104,7 @@ user.getName(); // 'Abraham'
 otherUser.getName(); // 'John' */
 
 // 7. Что выведет код, почему?
-function getList() {
+/* function getList() {
     return this.list;
 }
 let users = {
@@ -108,26 +118,42 @@ users.getList = getList;
 // теперь this будет ссылаться на users 
 users.getList(); // вернет массив
 // с помощью call получили зрачение this в котексте users
-getList.call(users); // вернет массив
+getList.call(users); // вернет массив */
 
 // 8. Создать объект с розничной ценой и количеством продуктов. Этот объект должен содержать метод для получения общей стоимости всех товаров (цена * количество продуктов)
-let product = {
+/* let product = {
     price: 100,
     totalNumber: 50,
     getCost: function() {
         return this.price * this.totalNumber;
     }
-}
+} */
 
 // 9. Создать объект из предыдущей задачи. Создать второй объект, который описывает количество деталей и цену за одну деталь. Для второго объекта нужно узнать общую стоимость всех деталей, но нельзя создавать новые функции и методы. Для этого "позаимствуйте" метод из предыдущего объекта
 
-let details = {
+/* let details = {
     price: 250,
     totalNumber: 10
 }
 details.getCost = product.getCost;
 product.getCost.call(details);
-product.getCost.apply(details);
+product.getCost.apply(details); */
+
+/* const products = {
+    sell: 100,
+    count: 2,
+    getCost() {
+        return this.sell * this.count;
+    }
+}
+
+const details = {
+    count: 4,
+    sell: 150,
+}
+
+details.getCost = products.getCost;
+console.log(details.getCost()); */
 
 // 10. Даны объект и функция:
 /* let size = {
@@ -147,7 +173,9 @@ let getSquare = function() {
     return this.width * this.height;
 }
 console.log(getSquare.call(size));
-console.log(getSquare.apply(size)); */
+console.log(getSquare.apply(size)); 
+console.log(getSquare.bind(size)());
+*/
 
 // 11. Дан массив let numbers = [4,12,0,10,-2,4]. Используя ссылку на массив numbers и Math.min, найти минимальный элемент массива
 /* let numbers = [4, 12, 0, 10, -2, 4];
@@ -181,8 +209,13 @@ const block = {
     marginBottom: '3px'
 }
 
-console.log(element.getFullHeigth.call(block));
-console.log(element.getFullHeigth.apply(block)); */
+console.log(element.getFullHeight.call(block));
+console.log(element.getFullHeight.apply(block)); 
+
+block.getFullHeight = element.getFullHeight;
+console.log(block.getFullHeight())
+ */
+
 
 // 13. 
 /* let element = {
@@ -209,7 +242,8 @@ getElementHeight(); // undefined
 
 let getElementHeight = element.getHeight;
 console.log(getElementHeight.call(element));
-console.log(getElementHeight.apply(element)); */
+console.log(getElementHeight.apply(element)); 
+*/
 
 // ============ Замыкание.Задачи ==========
 // 1. Создайте функцию, которая бы умела делать:
@@ -226,6 +260,13 @@ minus()(); //0 */
 }
 
 let minus = culc;
+
+// function minus(firstNum = 0) {
+//     return function (secondNum = 0) {
+//         return firstNum - secondNum;
+//     }
+// }
+
 console.log(minus(10)(6));
 console.log(minus(5)(6));
 console.log(minus(10)());
@@ -260,7 +301,7 @@ console.log(multiply(10)); */
 // c. получить длину строки
 // d. получить строку-перевертыш
 
-let modules = (function(){
+/* let modules = (function(){
     let str = '';
 
     function setStr(string = 0) {
@@ -290,11 +331,11 @@ let modules = (function(){
         getReverseStr
     }
 
-})();
+})(); */
 
 // 4. Создайте модуль "калькулятор", который умеет складывать, умножать, вычитать, делить и возводить в степень. Конечное значение округлить до двух знаков после точки (значение должно храниться в обычной переменной, не в this)
 
-let culc = (function(){
+/* let culc = (function(){
     let number = 0;
 
     function setValue(value) {
@@ -335,7 +376,7 @@ let culc = (function(){
     }
 })();
 
-console.log(culc);
+console.log(culc.setValue(10).expValue(2).getValue()); // 100 */
 
 
 
