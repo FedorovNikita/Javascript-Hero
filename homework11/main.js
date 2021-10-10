@@ -180,13 +180,13 @@ let getUsers = function() {
 
 Promise.all([
   getPosts()
-    .then(data => data)
+    // .then(data => data)
     .then(data => {
       let countPosts = 'Количество постов = ' + data.length;
       return countPosts;
     }),
   getUsers()
-    .then(data => data)
+    // .then(data => data)
     .then(data => {
       let countUsers = 'Количество пользователей = ' + data.length;
       return countUsers;
@@ -194,4 +194,19 @@ Promise.all([
 ])
   .then(data => console.log(data));
 
+/* const posts = fetch('https://jsonplaceholder.typicode.com/posts', { method: 'GET' });
+const users = fetch('https://jsonplaceholder.typicode.com/users', { method: 'GET' });
+
+Promise.all([
+  new Promise(response => {
+    posts
+      .then(res => res.json())
+      .then(posts => response('posts: ' + posts.length))
+  }),
+  new Promise(response => {
+    users
+      .then(res => res.json())
+      .then(users => response('users: ' + users.length))
+  })
+]).then(data => console.log(data)) */
 
