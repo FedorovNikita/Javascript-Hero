@@ -1,5 +1,6 @@
 // ------------------ Массивы. Задачи ------------------ 
 // 1. Решить задание с 11й задачи лекции "Массивы" с использованием filter() вместо цикла
+// Создать функцию, которая будет принимать массив продуктов и две цены. Функция должна вернуть все продукты, цена которых находится в указанном диапазоне, и отсортировать от дешевых к дорогим
 /* const products = [
     {title: 'prod1', price: 5.2},
     {title: 'prod2', price: 0.18},
@@ -22,6 +23,13 @@ function filterCollection(products, startPrice, finishPrice) {
 }
 
 console.log(filterCollection(products, 25, 100)); */
+
+/* const getProduct = (products, priceFrom, priceTo) => {
+  let newProductsList = products.filter(item => item.price > priceFrom && item.price < priceTo);
+  return newProductsList.sort((prev, next) => prev.price - next.price)
+}
+
+console.log(getProduct(products, 5, 20)); */
 
 // 2.  На основе массива [1, 2, 3, 5, 8, 9, 10] сформировать новый массив, каждый элемент которого будет хранить информацию о числе и его четности
 
@@ -55,6 +63,7 @@ console.log(result) */
 console.log(result); */
 
 // 5. Дан массив объектов, где каждый объект содержит информацию о букве и месте её расположения в строке {буква: "a", позиция_в_предложении: 1}. Напишите функцию, которая из элементов массива соберет и вернет строку, основываясь на index каждой буквы.
+// Как можно решить эту же задачу, не используя сортировку и reduce()?
 
 /* let listLetters = [
   { char: "a", index: 12 },
@@ -81,6 +90,25 @@ function lettersTransformToString(listLetters) {
 }
 
 console.log(lettersTransformToString(listLetters)); */
+
+// const madeString = (listArr) => {
+//     let sortItem = listArr.sort((prev, next) => prev.index - next.index);
+//     let res = sortItem.map(item => item.char).join('');
+//     return res;
+// }
+
+// console.log(madeString(list));
+
+
+// const madeString = (listArr) => {
+//     let sortArr = [];
+//     for (let i = 0; i < listArr.length; i++) {
+//         sortArr[listArr[i].index] = listArr[i].char;
+//     }
+//     return sortArr.join('');
+// }
+
+// console.log(madeString(listLetters));
 
 // Promise: tasks
 // 1. Создать функцию, которая возвращает промис. Функция принимает два аргумента - время, через которое промис должен выполниться, и значение, с которым промис будет выполнен
