@@ -47,6 +47,34 @@ let users = [
 
 // Promises
 
+// пример колбекхел
+/* let post;
+let comment;
+let id = 2;
+
+ajax.send({
+  method: 'GET',
+  url: `https://jsonplaceholder.typicode.com/posts/${id}`,
+  success: function(res) {
+    post = JSON.parse(res);
+    
+    ajax.send({
+      method: 'GET',
+      url: `https://jsonplaceholder.typicode.com/posts/${id}/comments`,
+      success: function(res) {
+        comment = JSON.parse(res);
+        console.log(comment);
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    })
+  },
+  error: function(err) {
+    console.log(err);
+  }
+}) */
+
 /* const promise = new Promise(function(resolve, reject) {
   setTimeout(function() {
     resolve('some value');
@@ -61,6 +89,41 @@ promise
   .then(data => {
     console.log(data + ' next step')
   }) */
+
+/* function promise1() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('First step');
+      resolve('First step')
+    }, 2000);
+  })
+}
+
+function promise2(data) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(data, 'Second step');
+      resolve('Second step');
+    }, 2000);
+  })
+}
+
+function promise3(data) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log(data, 'Third step');
+      resolve('Third step')
+    }, 2000);
+  })
+}
+
+// Цепочка вызовов промисов
+promise1()
+  .then(promise2)
+  .then(promise3)
+  .catch(err => {
+    console.log(err);
+  }); */
 
 
 /* let post;
