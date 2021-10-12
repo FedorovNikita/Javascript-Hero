@@ -21,6 +21,7 @@ searchInput.addEventListener('keyup', (e) => {
                     ui.showAlert(`User: ${userText} not found`, 'alert alert-danger');
                     // Clear profile
                     ui.clearProfile();
+                    ui.hideSpinner()
                 } else {
                     // Show profile
                     ui.showProfile(user);
