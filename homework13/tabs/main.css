@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+}
+
+.products-title__list {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.products-title__item {
+    width: calc(100% / 3);
+}
+
+.products-title__link {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    background-color: grey;
+    transition: all ease-out .3s;
+    color: #fff;
+}
+
+.products-title__link--active,
+.products-title__link:hover {
+    background-color: #fff;
+    color: black;
+}
+
+.products__item {
+    display: none;
+}
+
+.products__item--active {
+    display: block;
+}
